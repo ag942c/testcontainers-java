@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.MySQLContainer;
-import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -24,17 +22,11 @@ import java.util.List;
 class EmpControllerTest {
     private MockMvc mvc;
 
- /*   @Container
-    @ServiceConnection
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");*/
 
     @Container
     static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");
 
-    /*  spring.datasource.driver-class-name: com.mysql.jdbc.Driver
-      spring.datasource.url: jdbc:mysql://localhost:3306/testcontainer
-      spring.datasource.username: root
-      spring.datasource.password: root*/
+
     @DynamicPropertySource
     static void configDymanic(DynamicPropertyRegistry dynamicPropertyRegistry) {
         dynamicPropertyRegistry.add("spring.datasource.driver-class-name", mySQLContainer::getDriverClassName);
@@ -43,8 +35,6 @@ class EmpControllerTest {
         dynamicPropertyRegistry.add("spring.datasource.password", mySQLContainer::getPassword);
 
     }
-
- /*   static PostgreSQLContainer PostgreSQLContainer111 = new PostgreSQLContainer<>("postgres:alpine3.20");*/
 
 
     @LocalServerPort
