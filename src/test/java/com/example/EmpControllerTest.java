@@ -76,7 +76,6 @@ class EmpControllerTest {
     @Test
     void save1Record() throws Exception {
         List<Emp> emps = getEmps();
-        log.info("################################################ Before Save AAAAAAAAA"+ emps);
         log.info("################################################ Before Save " + (emps == null ? 0 : emps.size()  ));
         for( int i=0;i<10;i++){
             Assertions.assertThat(this.restTemplate.postForObject("http://localhost:" + port + "/emps", Emp.builder().name("TEXT_NAME" + new Date()).build(),
@@ -84,7 +83,6 @@ class EmpControllerTest {
         }
 
         emps =  getEmps();
-        log.info("################################################ After Save AAAAAAAAA"+ emps);
         log.info ("################################################ After Save " + (emps == null ? 0 : emps.size()));
     }
 
