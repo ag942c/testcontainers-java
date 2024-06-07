@@ -24,12 +24,12 @@ import java.util.List;
 class EmpControllerTest {
     private MockMvc mvc;
 
-    @Container
+ /*   @Container
     @ServiceConnection
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");*/
 
-   /* @Container
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");*/
+    @Container
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");
 
     /*  spring.datasource.driver-class-name: com.mysql.jdbc.Driver
       spring.datasource.url: jdbc:mysql://localhost:3306/testcontainer
@@ -37,6 +37,7 @@ class EmpControllerTest {
       spring.datasource.password: root*/
     @DynamicPropertySource
     static void configDymanic(DynamicPropertyRegistry dynamicPropertyRegistry) {
+        dynamicPropertyRegistry.add("spring.datasource.driver-class-name", mySQLContainer::getDriverClassName);
         dynamicPropertyRegistry.add("spring.datasource.url", mySQLContainer::getJdbcUrl);
         dynamicPropertyRegistry.add("spring.datasource.username", mySQLContainer::getUsername);
         dynamicPropertyRegistry.add("spring.datasource.password", mySQLContainer::getPassword);
