@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,7 +25,11 @@ class EmpControllerTest {
     private MockMvc mvc;
 
     @Container
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");
+    @ServiceConnection
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");
+
+   /* @Container
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");*/
 
     /*  spring.datasource.driver-class-name: com.mysql.jdbc.Driver
       spring.datasource.url: jdbc:mysql://localhost:3306/testcontainer
