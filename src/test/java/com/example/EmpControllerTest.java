@@ -44,7 +44,7 @@ class EmpControllerTest {
 
     }
 
-    static PostgreSQLContainer PostgreSQLContainer111 = new PostgreSQLContainer<>("postgres:alpine3.20");
+ /*   static PostgreSQLContainer PostgreSQLContainer111 = new PostgreSQLContainer<>("postgres:alpine3.20");*/
 
 
     @LocalServerPort
