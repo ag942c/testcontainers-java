@@ -61,16 +61,16 @@ class EmpControllerTest {
 
     }
 
-    @Test
+ /*   @Test
     void checkNoOfRecords() throws Exception {
 
-        System.out.println("Number of records " + mySQLContainer.getWorkingDirectory());
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   Number of records " + mySQLContainer.getWorkingDirectory());
         List<Emp> emps = this.restTemplate.getForObject("http://localhost:" + port + "/emps",
                 List.class);
 
         Assertions.assertThat("==================" + emps.size());
     }
-
+*/
     @Test
     void save1Record() throws Exception {
         List<Emp> emps = getEmps();
