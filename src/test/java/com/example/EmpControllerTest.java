@@ -83,7 +83,7 @@ class EmpControllerTest {
                     Emp.class));
         }
 
-        getEmps();
+        emps =  getEmps();
         log.info("################################################ After Save AAAAAAAAA"+ emps);
         log.info ("################################################ After Save " + (emps == null ? 0 : emps.size()));
     }
