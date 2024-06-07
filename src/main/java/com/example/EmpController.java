@@ -19,7 +19,7 @@ public class EmpController {
 
     @PostMapping("/emps")
     public Emp executePost(@RequestBody Emp queryRequest) throws IOException {
-        log.info("EMP Going to be saved "+queryRequest.toString());
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~EMP Going to be saved "+queryRequest.toString());
         return empService.save(queryRequest);
 
     }
@@ -27,8 +27,8 @@ public class EmpController {
     @GetMapping("/emps")
     public List<Emp> get() {
         List<Emp>  aaaaa =  empService.getResumeFilePaths11();
-        log.info("EMP Going to be saved "+aaaaa);
-        return empService.getResumeFilePaths11();
+        log.info("...............................................no of records "+aaaaa.size());
+        return aaaaa;
     }
 
 
