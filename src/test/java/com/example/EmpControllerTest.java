@@ -1,5 +1,6 @@
 package com.example;
 
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Slf4j
 class EmpControllerTest {
     private MockMvc mvc;
 
@@ -74,13 +76,13 @@ class EmpControllerTest {
     @Test
     void save1Record() throws Exception {
         List<Emp> emps = getEmps();
-        System.out.println("################################################ Before Save " + emps == null ? 0 : emps.size());
+        log.info(("################################################ Before Save " + emps == null ? 0 : emps.size());
 
         Assertions.assertThat(this.restTemplate.postForObject("http://localhost:" + port + "/emps", Emp.builder().name("TEXT_NAME" + new Date()).build(),
                 Emp.class));
         getEmps();
 
-        System.out.println("################################################ After Save " + emps == null ? 0 : emps.size());
+        log.info(("################################################ After Save " + emps == null ? 0 : emps.size());
     }
 
 
