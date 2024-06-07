@@ -24,10 +24,10 @@ class EmpControllerTest {
 
 
     @Container
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest").withDatabaseName("testcontainer").withUsername("root").withPassword("root");
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:8.1.0").withDatabaseName("testcontainer").withUsername("root").withPassword("root");
 
 
-    @DynamicPropertySource
+  @DynamicPropertySource
     static void configDymanic(DynamicPropertyRegistry dynamicPropertyRegistry) {
         dynamicPropertyRegistry.add("spring.datasource.driver-class-name", mySQLContainer::getDriverClassName);
         dynamicPropertyRegistry.add("spring.datasource.url", mySQLContainer::getJdbcUrl);
