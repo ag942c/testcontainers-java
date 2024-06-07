@@ -82,7 +82,7 @@ class EmpControllerTest {
         Assertions.assertThat(this.restTemplate.postForObject("http://localhost:" + port + "/emps", Emp.builder().name("TEXT_NAME" + new Date()).build(),
                 Emp.class));
         getEmps();
-
+        log.info("################################################ After Save AAAAAAAAA"+ emps);
         log.info ("################################################ After Save " + (emps == null ? 0 : emps.size()));
     }
 
