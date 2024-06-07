@@ -1,5 +1,6 @@
 package com.example;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class EmpController {
 
     @Autowired
@@ -17,12 +19,15 @@ public class EmpController {
 
     @PostMapping("/emps")
     public Emp executePost(@RequestBody Emp queryRequest) throws IOException {
+        log.info("EMP Going to be saved "+queryRequest.toString());
         return empService.save(queryRequest);
 
     }
 
     @GetMapping("/emps")
     public List<Emp> get() {
+        List<Emp>  aaaaa =  empService.getResumeFilePaths11();
+        log.info("EMP Going to be saved "+aaaaa);
         return empService.getResumeFilePaths11();
     }
 
